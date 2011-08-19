@@ -1,43 +1,5 @@
 require File.dirname(__FILE__) + '/test_helper'
 
-class Apple
-  include EnumeratedField
-
-  attr_accessor :color, :kind
-  
-  enum_field :color, [['Red', :red], ['Green', :green]], :validate => false
-  enum_field :kind, [['Fuji Apple', :fuji], ['Delicious Red Apple', :delicious]], :validate => false
-
-  def initialize(color, kind)
-    self.color = color
-    self.kind = kind
-  end
-
-end
-
-class Banana
-  include EnumeratedField
-  include ActiveModel::Validations
-
-  attr_accessor :brand
-  attr_accessor :color
-  attr_accessor :tastiness
-
-  enum_field :brand, [["Chiquita", :chiquita], ["Del Monte", :delmonte]]
-  enum_field :color, [["Awesome Yellow", :yellow], ["Icky Green", :green]], :allow_nil => true
-  # stressing the constantizing of the keys
-  enum_field :tastiness, [
-    ["Great", "great!"],
-    ["Good", "it's good"],
-    ["Bad", "hate-hate"],
-  ], :validate => false
-
-  def initialize(brand, color)
-    self.brand = brand
-    self.color = color
-  end
-end
-
 class EnumeratedFieldTest < Test::Unit::TestCase
 
   context 'EnumeratedField class' do
@@ -64,13 +26,26 @@ class EnumeratedFieldTest < Test::Unit::TestCase
       assert_equal "it's good", Banana::TASTINESS_IT_S_GOOD
       assert_equal "hate-hate", Banana::TASTINESS_HATE_HATE
     end
+
+    context 'that subclasses ActiveRecord::Base' do
+      subject { Apple }
+
+      should 'have scopes for each enumerated value' do
+        assert_equal 4, Apple.count
+        Apple.color_values.each do |a|
+          assert Apple.respond_to? "color_#{a[1]}"
+          assert Apple.send("color_#{a[1]}").any?
+        end
+      end
+    end
+
   end
 
   context 'EnumeratedField instance' do
 
     setup do
-      @red_apple = Apple.new(:red, :fuji)
-      @green_apple = Apple.new(:green, :delicious)
+      @red_apple = Apple.new(:color => :red, :kind => :fuji)
+      @green_apple = Apple.new(:color => :green, :kind => :delicious)
     end
 
     should 'have color_display method' do
@@ -125,7 +100,7 @@ class EnumeratedFieldTest < Test::Unit::TestCase
 
     should 'not occur if passed :validate => false' do
       # no validations, accepts any choice
-      apple = Apple.new(:orange, :macintosh)
+      apple = Apple.new(:color => :orange, :kind => :macintosh)
       assert !apple.respond_to?(:valid)
     end
 
