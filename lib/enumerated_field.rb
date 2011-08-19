@@ -81,6 +81,12 @@ module EnumeratedField
           define_method("#{field_name}_#{key}?") { send(field_name).to_s == key.to_s }
         end
 
+        if defined? ActiveRecord::Base and ancestors.include? ActiveRecord::Base
+          values_hash.keys.each do |key|
+            scope "#{field_name}_#{key}", where(field_name => key)
+          end
+        end
+
       end
     end
 
