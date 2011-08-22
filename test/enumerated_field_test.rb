@@ -27,18 +27,6 @@ class EnumeratedFieldTest < Test::Unit::TestCase
       assert_equal "hate-hate", Banana::TASTINESS_HATE_HATE
     end
 
-    context 'that subclasses ActiveRecord::Base' do
-      subject { Apple }
-
-      should 'have scopes for each enumerated value' do
-        assert_equal 4, Apple.count
-        Apple.color_values.each do |a|
-          assert Apple.respond_to? "color_#{a[1]}"
-          assert Apple.send("color_#{a[1]}").any?
-        end
-      end
-    end
-
   end
 
   context 'EnumeratedField instance' do
@@ -109,4 +97,29 @@ class EnumeratedFieldTest < Test::Unit::TestCase
       assert banana.valid?, banana.errors[:brand][0].to_s
     end
   end
+
+  context 'ActiveRecord' do
+    context 'instance' do
+      subject { Apple.new }
+
+      should have_db_column :color
+      should have_db_column :kind
+    end
+
+    context 'class' do
+      subject { Apple }
+
+      should 'have scopes for each enumerated value' do
+        assert_equal 4, subject.count
+        ['color', 'kind'].each do |column|
+          subject.send("#{column}_values").each do |a,b|
+            assert subject.respond_to? "#{column}_#{b}"
+            assert subject.send("#{column}_#{b}").any?
+            assert_equal 2, subject.send("#{column}_#{b}").size
+          end
+        end
+      end
+    end
+  end
+
 end

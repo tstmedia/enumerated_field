@@ -1,12 +1,12 @@
-
 require 'test/unit'
 require 'turn'
-require 'shoulda'
 require 'active_record'
 require 'active_record/fixtures'
 require 'yaml'
 require 'sqlite3'
 require 'enumerated_field'
+require 'shoulda'
+require 'shoulda/active_record'
 
 ActiveRecord::Base.establish_connection :adapter => 'sqlite3', :database => ':memory:'
 ActiveRecord::Schema.define do
