@@ -2,12 +2,18 @@
 $:.push File.expand_path("../lib", __FILE__)
 require "enumerated_field/version"
 
+AUTHORS = {
+  "Luke Ludwig" => "luke.ludwig@tstmedia.com",
+  "Patrick Byrne" => "patrick.byrne@tstmedia.com",
+  "Jon Karna" => "jon.karna@tstmedia.com",
+}
+
 Gem::Specification.new do |s|
   s.name        = "enumerated_field"
   s.version     = EnumeratedField::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["Luke Ludwig"]
-  s.email       = ["luke.ludwig@tstmedia.com"]
+  s.authors     = AUTHORS.keys
+  s.email       = AUTHORS.values
   s.homepage    = "https://github.com/tstmedia/enumerated_field"
   s.summary     = %q{EnumeratedField is a library that provides some nice methods when a string column is used like an enumeration.}
   s.description = %q{EnumeratedField is a library that provides some nice methods when a string column is used like an enumeration, meaning there is a list of allowable values for the string column.}
