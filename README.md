@@ -99,3 +99,4 @@ daring).
 ## TODO
 
 * Provide any support needed for defining columns on MySQL databases as enum columns instead of string columns.
+
