@@ -5,3 +5,9 @@ rvm:
   - jruby
   - ruby-head
   - rbx-2.0
+notifications:
+  # overriding this so billing@teamsporttech.com (who owns the repo) doesn't get spammed
+  # anyone, feel free to add yourselves
+  email:
+    - patrick.byrne@tstmedia.com
+    - jon.karna@tstmedia.com
