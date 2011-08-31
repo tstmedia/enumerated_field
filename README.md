@@ -80,6 +80,16 @@ these.
     > Hike.trail_values # or get it from the class instead of the instance, if you like
     => [['Pacific Crest Trail', 'pct'], ['Continental Divide Trail', 'cdt'], ['Superior Hiking Trail', 'sht']]
 
+### ActiveRecord Scopes
+
+These scopes are only created when your object is an ActiveRecord model.
+
+    # performs Hike.where(:trail => Hike::TRAIL_CDT)
+    > Hike.trail_cdt
+
+    # performs Hike.where(:duration => Hike::DURATION_LONG)
+    > Hike.duration_long
+
 ### Use Constants for Keys
 
     > Hike::TRAIL_PCT
