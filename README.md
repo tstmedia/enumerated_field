@@ -97,6 +97,22 @@ These scopes are only created when your object is an ActiveRecord model.
     > Hike::TRAIL_SHT
     => :sht
 
+### Display Specified Value
+
+    > hike.trail_display_for("sht")
+    => "Superior Hiking Trail"
+
+    > hike.duration_display_for("short")
+    => "Short"
+
+### Value for Specified Display
+
+    > hike.trail_value_for("Superior Hiking Trail")
+    => "sht"
+
+    > hike.duration_value_for("Short")
+    => "short"
+
 These methods are all prefixed with the field name by design, which
 allows multiple fields on a model to exist which potentially have the
 same values.
