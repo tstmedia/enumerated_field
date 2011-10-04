@@ -17,8 +17,8 @@ class EnumeratedFieldTest < Test::Unit::TestCase
     end
 
     should 'create contstants for the field keys' do
-      assert_equal "chiquita", Banana::BRAND_CHIQUITA
-      assert_equal "delmonte", Banana::BRAND_DELMONTE
+      assert_equal :chiquita, Banana::BRAND_CHIQUITA
+      assert_equal :delmonte, Banana::BRAND_DELMONTE
     end
 
     should 'create underscored constants from field keys which contain invalid constant name characters' do

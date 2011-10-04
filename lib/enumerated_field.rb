@@ -51,7 +51,7 @@ module EnumeratedField
             :allow_nil => options[:allow_nil], :allow_blank => options[:allow_blank]
         end
 
-        values_hash.each do |key, value|
+        values_array.each do |value, key|
           const_name = "#{field_name}_#{key}".upcase.gsub(/[^\w_]/, "_").to_sym
           const_set(const_name, key)
         end
