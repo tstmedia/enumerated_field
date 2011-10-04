@@ -59,6 +59,7 @@ class EnumeratedFieldTest < Test::Unit::TestCase
 
     should 'have 2 values without first option' do
       assert_equal @red_apple.color_values.length, 2
+      assert_equal @red_apple.color_values, [['Red', :red], ['Green', :green]]
     end
 
     should 'have 3 values with first option' do
