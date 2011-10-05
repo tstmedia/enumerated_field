@@ -1,0 +1,67 @@
+
+v0.0.2
+
+* bumped version
+* added allow_blank choice for validation
+* added :allow_nil => true choice to accept nil values for validation
+* more tweaks to the README
+* added README entry for the constants
+* cleaning up validation test descriptions
+* added constants for the enumerated keys
+* merged add_validation into master
+* updated validation tests to use shoulda
+* merged master, with jon's additions, into branch
+* Merge pull request #1 from jonkarna/master
+* switched from not validating by default to validation by default
+* cleared TODO
+* add activemodel as a dependency (for validations)
+* updated readme and included validation information
+* Added rake test to make executing tests easier
+* Added test for the #{field_name}_values class method. Reformatted existing tests to use shoulda.
+* Added turn and shoulda to development dependencies to spice up the testing
+* Forgot to pass options as a splat within the instance method
+* Added (field_name)_values method to class
+* moved ActiveModel from the module to the test since it is a development dependency, not a dependency of the gem
+* testing the contra example that unless you specify to validate, it won't
+* added TODO
+* added capability to validate that the value is in the enumerated list
+
+v0.0.3
+
+* bumped version
+* added code to handle creating constants from constant-unsafe keys
+
+v0.0.4
+
+* bumped gem version
+* fixed error about undefined method validates in Apple
+* Merge pull request #2 from jonkarna/master
+* Added test for validating a string value that has an equivalent value in the enumerated field key list
+* Added string equivalent of symbol key to validation and vice versa
+
+v0.1.0
+
+* bumped to version 0.1.0
+* Updated gem to handle strings and symbols as equivalent keys
+
+v0.2.0
+
+* Bumped version number
+* added jon and me to the list of authors
+* tweaking who gets alerted from travis-ci
+* tweaking which rubies to target
+* trying again to trigger travis
+* adding travis configuration
+* triggering travis-ci
+* More comprehensive active record scope test
+* Made test the default rake task, in prep for integration with Travis CI
+* Moved models to test_helper
+* Apple fixture file
+* Changed Apple to be an ActiveRecord model. Moved models to test_helper. Loading fixtures.
+* Added section of code for adding scopes if a decendent from ActiveRecord::Base
+* Added activerecord and sqlite3 to dev dependencies
+* hard-wrap README
+* add activesupport to gem dependencies
+* tests pass with ruby 1.9
+* fix test load path for ruby 1.9
+* changed to use class_eval for the values_array
