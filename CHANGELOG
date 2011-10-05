@@ -65,3 +65,14 @@ v0.2.0
 * tests pass with ruby 1.9
 * fix test load path for ruby 1.9
 * changed to use class_eval for the values_array
+
+v0.3.0
+
+* Bump version number
+* Add changelog
+* Test that FIELDNAME_values returns the values in original symbol form
+* Return original value from the constants
+* Remove JRuby from Travis CI
+* Complete the examples in the README
+* cleaning up whitespace
+* updated README with new scopes
