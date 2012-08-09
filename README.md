@@ -1,3 +1,5 @@
+[![TravisCI](https://secure.travis-ci.org/tstmedia/enumerated_field.png "TravisCI")](http://travis-ci.org/tstmedia/enumerated_field "Travis-CI EnumeratedField")
+
 EnumeratedField is a library that provides some nice methods when a
 string column is used like an enumeration, meaning there is a list of
 allowable values for the string column. Typically you want the display
